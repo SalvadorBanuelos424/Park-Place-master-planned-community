@@ -39,6 +39,8 @@ Home.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'painting',
+        modelName: 'home',
     }
 );
+
+module.exports = Home;
