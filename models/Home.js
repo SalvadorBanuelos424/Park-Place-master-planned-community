@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Events extends Model {}
+const Home extends Model {}
 
-Events.init(
+Home.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,23 +11,36 @@ Events.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        event_name: {
+        street: {
             type: DataTypes.STRING,
-            allowNull: false,
-        },        
-        event_description: {
+            allowNull: false,            
+        },
+        city: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        event_date: {
-            type: DataTypes.DATE,
+        state: {
+            type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        country: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            },
+        },
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'gallery',
+        modelName: 'home',
     }
 );
+
+module.exports = Home;
