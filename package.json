@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
+    "start": "npm run tailwind:css && node server.js"
   },
   "keywords": [],
   "author": "",
