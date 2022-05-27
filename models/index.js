@@ -10,3 +10,5 @@ User.hasOne(Home, {
 Home.belongsTo(User, {
     foreignKey: 'user_id',
 });
+
+module.exports = { User, Home, Events, Amenities };
