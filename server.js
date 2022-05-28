@@ -1,14 +1,20 @@
 const express = require('express');
 const path = require('path');
-const session = require()
+const session = require('express-session');
 const exphbs = require('express-handlebars');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-const Sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+const Sequelize = require('./config/connection');
+const helpers = require('./utils/helpers');
+const routes = require('./controllers/');
+
+
+//express declaration
+const app = express();
+//port for sequelize
+const PORT = process.env.PORT || 3001;
+//express session
 const sess = {
   secret: 'Super secret secret',
   cookie: {},
@@ -18,22 +24,20 @@ const sess = {
     db: sequelize
   })
 };
-
 app.use(session(sess));
-
-const helpers = require('./utils/helpers');
-
+//handlebars declaration
 const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
-
+//express middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+//
 app.set(express.static(path.join(__dirname, 'public')));
 
-app.use(require('./controllers/'));
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
