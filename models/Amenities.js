@@ -19,10 +19,6 @@ Amenities.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        amenity_date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-        },
         reservation_id: {
             type: DataTypes.INTEGER,
             references: {

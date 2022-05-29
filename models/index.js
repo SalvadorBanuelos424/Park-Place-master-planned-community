@@ -9,7 +9,7 @@ const Reservations = require('./Reservations');
 Home.hasOne(User, {
     foreignKey: 'user_id',
 });
-User.belongsTo(Home {
+User.belongsTo(Home, {
     foreignKey: 'user_id',
     onDelete: 'SET NULL'
 });
@@ -26,11 +26,11 @@ Reservations.belongsTo(User, {
 
 //rsvp -> amenity connection
 //each reservation entry can only have one amenity, one to one
-Reservations.hasOne(Amenities, {
-    foreignKey: 'reservation_id',
+Amenities.hasOne(Reservations, {
+    foreignKey: 'amenity_id',
 });
-Amenities.belongsTo(Reservations, {
-    foreignKey: 'reservation_id',
+Reservations.belongsTo(Amenities, {
+    foreignKey: 'amenity_id',
 });
 
 //event -> rsvp connection

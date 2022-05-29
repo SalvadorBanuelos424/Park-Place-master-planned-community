@@ -22,6 +22,17 @@ Reservations.init(
                 key: 'id'
             }
         },
+        reservation_date: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        amenity_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'amenities',
+                key: 'id'
+            }
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
