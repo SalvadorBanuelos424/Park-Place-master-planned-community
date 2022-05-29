@@ -21,30 +21,35 @@ router.get('/dashboard', withAuth, async (req, res) => {
     const event = [];
 
     //get all amenities from db
-    Amenities.findAll({
-        where: {
-            //searches all amenities on db but only returns from today and out 30 days for the calendar
-            amenity_date: {
-                [sequelize.between]: [sequelize.literal('select curdate()'), sequelize.literal('select adddate(curdate(), interval 30 day)')]
-            }
-        },
-        order: [
-            ['amenity_date', 'ASC']
-        ],
+    Reservations.findAll({
+        
         attributes: [
             'id',
-            'amenity_name',
-            'amenity_description',
-            'amenity_date'
+            'attendance',
+            'user_id',
+            'created_at'
         ],
         include: [
             {
-                model: Reservations,
-                attributes: ['id', 'attendance', 'amenity_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['name']
-                }
+                model: Amenities,
+                where: {
+                    //searches all amenities on db but only returns from today and out 30 days for the calendar
+                    amenity_date: {
+                        [sequelize.between]: [sequelize.literal('select curdate()'), sequelize.literal('select adddate(curdate(), interval 30 day)')]
+                    }
+                },
+                attributes: [
+                'id',
+                'amenity_name',
+                'amenity_description',
+                'amenity_date',
+                'reservation_id'
+                ],
+                
+            },
+            {
+                model: User,
+                attributes: ['name']
             }
         ]
     })

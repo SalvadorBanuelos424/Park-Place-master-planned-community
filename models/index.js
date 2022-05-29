@@ -11,6 +11,7 @@ User.hasOne(Home, {
 });
 Home.belongsTo(User, {
     foreignKey: 'user_id',
+    onDelete: 'SET NULL'
 });
 
 //user -> rsvp connection
@@ -20,6 +21,7 @@ User.hasMany(Reservations, {
 });
 Reservations.belongsTo(User, {
     foreignKey: 'user_id',
+    onDelete: 'SET NULL'
 });
 
 //rsvp -> amenity connection
@@ -38,6 +40,7 @@ Events.hasMany(Reservations, {
 });
 Reservations.belongsTo(Events, {
     foreignKey: 'event_id',
+    onDelete: 'SET NULL'
 })
 
 module.exports = { User, Home, Events, Amenities, Reservations };
