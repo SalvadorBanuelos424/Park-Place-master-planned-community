@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Events } = require('../../models');
+const { Reservations } = require('../../models');
 
 
 
