@@ -23,6 +23,13 @@ Amenities.init(
             type: DataTypes.DATE,
             allowNull: false,
         },
+        reservation_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'reservations',
+                key: 'id'
+            }
+        },
     },
     {
         sequelize,

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Amenities, Events, Home, User, Rsvp } = require('../models');
+const { Amenities, Events, Home, User, Rsvp, Reservations } = require('../models');
 const sequelize = require('../config/connection');
 //middleware
 const withAuth = require('../util/auth');
@@ -29,14 +29,23 @@ router.get('/dashboard', withAuth, async (req, res) => {
             }
         },
         order: [
-            ['amenity_date', 'DESC']
+            ['amenity_date', 'ASC']
         ],
         attributes: [
             'id',
             'amenity_name',
             'amenity_description',
             'amenity_date'
-            //fill in attr to get
+        ],
+        include: [
+            {
+                model: Reservations,
+                attributes: ['id', 'attendance', 'amenity_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['name']
+                }
+            }
         ]
     })
     .then(amenityData => {
@@ -69,17 +78,24 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 
 
-//get events page
-router.get('/event', withAuth, async (req, res) => {
+//when user clicks calendar item display single event
+router.get('/event/:id', withAuth, async (req, res) => {
+    Event.findOne({})
+    .then()
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
 
 });
-//get amenities page
-router.get('/amenities', withAuth, async (req, res) => {
-
-});
-//get gallery
-router.get('/gallery', withAuth, async (req, res) => {
-
+//when user clicks calendar item displays single amenity
+router.get('/amenities/:id', withAuth, async (req, res) => {
+    Amenities.findOne({})
+    .then()
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
 });
 
 module.exports = router;
