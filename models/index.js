@@ -4,12 +4,12 @@ const Events = require('./Events');
 const Amenities = require('./Amenities');
 const Reservations = require('./Reservations');
 
-//user -> home connection
-//each user only has one home, one to one
-User.hasOne(Home, {
+//home -> user connection
+//each home only has one user, one to one
+Home.hasOne(User, {
     foreignKey: 'user_id',
 });
-Home.belongsTo(User, {
+User.belongsTo(Home {
     foreignKey: 'user_id',
     onDelete: 'SET NULL'
 });
@@ -41,6 +41,6 @@ Events.hasMany(Reservations, {
 Reservations.belongsTo(Events, {
     foreignKey: 'event_id',
     onDelete: 'SET NULL'
-})
+});
 
 module.exports = { User, Home, Events, Amenities, Reservations };

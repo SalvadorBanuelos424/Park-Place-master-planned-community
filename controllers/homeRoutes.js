@@ -44,8 +44,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
                 'amenity_description',
                 'amenity_date',
                 'reservation_id'
-                ],
-                
+                ]                
             },
             {
                 model: User,
@@ -61,8 +60,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
     //get all events from db
     Events.findAll({
         attributes: [
-            //fill in attr to get
-        ]
+            'id',
+            'event_name',
+            'event_description',
+            'event_date'
+        ]        
     })
     .then(eventData => {
         event = eventData.map(event => event.get({ plain: true}));
@@ -72,8 +74,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     //send events and amenities data to template
     res.render('dashboard', {
         amenity,
-        event,
-        loggedIn: true
+        event
     });
 });
 
@@ -85,7 +86,32 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 //when user clicks calendar item display single event
 router.get('/event/:id', withAuth, async (req, res) => {
-    Event.findOne({})
+    Event.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'event_name',
+            'event_description',
+            'event_date'
+        ],
+        include: [
+            {
+                model: Reservations,
+                attributes: [
+                    'id',
+                    'attendance',
+                    'user_id',
+                    'created_at'
+                ],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
+        ]
+    })
     .then()
     .catch(err => {
         console.log(err);
@@ -93,14 +119,16 @@ router.get('/event/:id', withAuth, async (req, res) => {
       });
 
 });
-//when user clicks calendar item displays single amenity
-router.get('/amenities/:id', withAuth, async (req, res) => {
-    Amenities.findOne({})
-    .then()
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-});
+
+// //not sure what to do for route to make reservation
+// //when user clicks calendar item displays single reservation
+// router.get('/reservation/:id', withAuth, async (req, res) => {
+//     Reservations.findOne({})
+//     .then()
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+// });
 
 module.exports = router;

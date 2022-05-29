@@ -39,6 +39,15 @@ User.init(
         len: [8],
       },
     },
+    home_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      references: {
+        model: 'home',
+        key: 'id',
+      },    
+    }
   },
   {
     hooks: {
