@@ -9,22 +9,24 @@
 </head>
 <body>
   <header>
-    <div class="grid place-content-center">
-    <a class="text-4xl bg-blue-600" href="/">Park Place Community</a>
-  </div>
- <nav>
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
+      <h1>Park Place</h1>
+      
+      <nav>
+          {{#if loggedIn}}
+          <a href="/">Dashboard</a>
+          {{/if}}
+          <a href="/">Gallery</a>
+          <a href="/">Contact</a>
+          {{#if loggedIn}}
+          <button>Logout</button>
+          {{/if}}
       </nav>
+
+    
   </header>
   
   <main>
     {{{body}}}
   </main>
-  
 </body>
 </html>

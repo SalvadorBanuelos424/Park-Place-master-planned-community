@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { Amenities, Events, Home, User, Rsvp, Reservations } = require('../models');
+const { Amenities, Events, Home, User, Reservations } = require('../models');
 const sequelize = require('../config/connection');
-//middleware
+
 const withAuth = require('../util/auth');
 
 //home page for login or signup, if user is already logged in will redirect to dashboard
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
         return;
     }    
     res.render('homepage', {
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn        
     });
 });
 
@@ -78,11 +78,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 
-
-
-
-
-
 //when user clicks calendar item display single event
 router.get('/event/:id', withAuth, async (req, res) => {
     Event.findOne({
@@ -119,15 +114,15 @@ router.get('/event/:id', withAuth, async (req, res) => {
 
 });
 
-// //not sure what to do for route to make reservation
-// //when user clicks calendar item displays single reservation
-// router.get('/reservation/:id', withAuth, async (req, res) => {
-//     Reservations.findOne({})
-//     .then()
-//     .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-// });
+// // //not sure what to do for route to make reservation
+// // //when user clicks calendar item displays single reservation
+// // router.get('/reservation/:id', withAuth, async (req, res) => {
+// //     Reservations.findOne({})
+// //     .then()
+// //     .catch(err => {
+// //         console.log(err);
+// //         res.status(500).json(err);
+// //       });
+// // });
 
 module.exports = router;
