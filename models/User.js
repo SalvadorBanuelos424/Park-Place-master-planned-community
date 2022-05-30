@@ -16,6 +16,14 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isAlphanumeric: true,
+        notEmpty: true
+      }
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,6 +39,15 @@ User.init(
         len: [8],
       },
     },
+    home_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      references: {
+        model: 'home',
+        key: 'id',
+      },    
+    }
   },
   {
     hooks: {

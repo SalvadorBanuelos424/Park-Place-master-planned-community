@@ -21,7 +21,7 @@ router.get('/:email', (req, res) => {
 
 router.post('/', (req, res) => {
   User.create({
-    address: req.body.address,
+    name: req.body.name,
     email: req.body.email,
     password: req.body.password,
   })
