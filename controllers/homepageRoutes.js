@@ -16,6 +16,13 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.get('/signup', async (req, res) => {
+    console.log('===============SIGNUP================');       
+    res.render('signup', {
+        loggedIn: req.session.loggedIn        
+    });
+});
+
 //get dashboard for logged in user, get all amenities and events from db to display in calendar on template
 router.get('/dashboard', withAuth, async (req, res) => {
     console.log('===============DASHBOARD================');
@@ -75,7 +82,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
     //send events and amenities data to template
     res.render('dashboard', {
         amenity,
-        event
+        event,
+        loggedIn: req.session.loggedIn
     });
 });
 
@@ -114,6 +122,18 @@ router.get('/event/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
       });
 
+});
+
+router.get('/gallery', async (req, res) => {
+    res.render('gallery', {
+        loggedIn: req.session.loggedIn        
+    });
+});
+
+router.get('/contact', async (req, res) => {
+    res.render('contact', {
+        loggedIn: req.session.loggedIn
+    });
 });
 
 // // //not sure what to do for route to make reservation

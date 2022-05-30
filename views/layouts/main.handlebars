@@ -12,11 +12,9 @@
       <h1>Park Place</h1>
       
       <nav>
-          {{#if loggedIn}}
-          <a href="/">Dashboard</a>
-          {{/if}}
-          <a href="/">Gallery</a>
-          <a href="/">Contact</a>
+          <a href="/">{{#if loggedIn}}Dashboard{{else}}Home{{/if}}</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/contact">Contact</a>
           {{#if loggedIn}}
           <button>Logout</button>
           {{/if}}
