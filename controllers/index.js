@@ -4,6 +4,6 @@ const apiRoutes = require('./api');
 const homeRoutes = require('./homepageRoutes');
 
 router.use('/', homeRoutes);
-// router.use('/api', apiRoutes);
+router.use('/api', apiRoutes);
 
 module.exports = router;

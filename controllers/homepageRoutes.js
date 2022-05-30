@@ -6,6 +6,7 @@ const withAuth = require('../util/auth');
 
 //home page for login or signup, if user is already logged in will redirect to dashboard
 router.get('/', async (req, res) => {
+    console.log('===============HOMEPAGE================');
     if (req.session.loggedIn) {
         res.redirect('/dashboard');
         return;
@@ -17,44 +18,45 @@ router.get('/', async (req, res) => {
 
 //get dashboard for logged in user, get all amenities and events from db to display in calendar on template
 router.get('/dashboard', withAuth, async (req, res) => {
+    console.log('===============DASHBOARD================');
     const amenity = [];
     const event = [];
 
-    //get all amenities from db
-    Reservations.findAll({
-        where: {
-            //searches all amenities on db but only returns from today and out 30 days for the calendar
-            reservation_date: {
-                [sequelize.between]: [sequelize.literal('select curdate()'), sequelize.literal('select adddate(curdate(), interval 30 day)')]
-            }
-        },
-        attributes: [
-            'id',
-            'attendance',
-            'user_id',
-            'reservation_date',
-            'created_at'
-        ],
-        include: [
-            {
-                model: Amenities,                
-                attributes: [
-                'id',
-                'amenity_name',
-                'amenity_description',
-                'reservation_id'
-                ]                
-            },
-            {
-                model: User,
-                attributes: ['name']
-            }
-        ]
-    })
-    .then(amenityData => {
-        amenity = amenityData.map(amenity => amenity.get({ plain: true}));
-    })
-    .catch(err => {console.log(err); res.status(500).json(err);});
+    // //get all amenities from db
+    // Reservations.findAll({
+    //     where: {
+    //         //searches all amenities on db but only returns from today and out 30 days for the calendar
+    //         reservation_date: {
+    //             [sequelize.between]: [sequelize.literal('select curdate()'), sequelize.literal('select adddate(curdate(), interval 30 day)')]
+    //         }
+    //     },
+    //     attributes: [
+    //         'id',
+    //         'attendance',
+    //         'user_id',
+    //         'reservation_date',
+    //         'created_at'
+    //     ],
+    //     include: [
+    //         {
+    //             model: Amenities,                
+    //             attributes: [
+    //             'id',
+    //             'amenity_name',
+    //             'amenity_description',
+    //             'reservation_id'
+    //             ]                
+    //         },
+    //         {
+    //             model: User,
+    //             attributes: ['name']
+    //         }
+    //     ]
+    // })
+    // .then(amenityData => {
+    //     amenity = amenityData.map(amenity => amenity.get({ plain: true}));
+    // })
+    // .catch(err => {console.log(err); res.status(500).json(err);});
     
     //get all events from db
     Events.findAll({

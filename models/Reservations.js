@@ -10,26 +10,19 @@ Reservations.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-        },
+          },
         attendance: {
             type: DataTypes.STRING,
             allowNull: false,
-        },                        
+        },  
+        reservation_date: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },                      
         event_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'events',
-                key: 'id'
-            }
-        },
-        reservation_date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-        },
-        amenity_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'amenities',
                 key: 'id'
             }
         },

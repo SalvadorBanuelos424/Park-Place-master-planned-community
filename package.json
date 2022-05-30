@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
-    "start": "npm run tailwind:css && node server.js"
+    "start": "npm run tailwind:css && node server.js",
+    "seeds": "node seeds/index.js"
   },
   "keywords": [],
   "author": "",

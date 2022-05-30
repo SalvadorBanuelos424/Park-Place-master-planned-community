@@ -42,7 +42,6 @@ User.init(
     home_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
       references: {
         model: 'home',
         key: 'id',
