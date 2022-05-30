@@ -1,7 +1,7 @@
+const path = require('path');
 const express = require('express');
-// const path = require('path');
 // const session = require('express-session');
-const {engine} = require('express-handlebars');
+const {create} = require('express-handlebars');
 // const routes = require('./controllers');
 
 const app = express();
@@ -24,28 +24,23 @@ const PORT = process.env.PORT || 3001;
 
 // app.use(session(sess));
 
-// const helpers = require('./utils/helpers');
+const helpers = require('./util/helpers');
 
-// const hbs = exphbs.create({});
+const hbs = create({ helpers });
 
-app.engine('handlebars', engine({defaultLayout: 'main'}));
-// app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.render('homepage');
-});
-
-
-
-// app.use(require('./controllers/'));
+app.use(require('./controllers/'));
 
 // sequelize.sync({ force: false }).then(() => {
   
 // });
 
-app.listen(PORT, () => console.log('Now listening'));
+app.listen(PORT, () => {
+  console.log('Now listening');
+});
