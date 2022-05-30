@@ -38,3 +38,5 @@ Amenities.init(
         modelName: 'gallery',
     }
 );
+
+module.exports = Amenities;

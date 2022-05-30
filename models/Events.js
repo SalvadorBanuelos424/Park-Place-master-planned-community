@@ -31,3 +31,5 @@ Events.init(
         modelName: 'gallery',
     }
 );
+
+module.exports = Events;
