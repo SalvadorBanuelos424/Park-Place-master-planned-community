@@ -19,22 +19,20 @@ Amenities.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        amenity_date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-        },
-        user_id: {
+        reservation_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'reservations',
                 key: 'id'
-            },
+            }
         },
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'gallery',
+        modelName: 'amenities',
     }
 );
+
+module.exports = Amenities;

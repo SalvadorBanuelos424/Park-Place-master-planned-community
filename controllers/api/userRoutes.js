@@ -19,17 +19,17 @@
 //   });
 // });
 
-// router.post('/', (req, res) => {
-//   User.create({
-//     address: req.body.address,
-//     email: req.body.email,
-//     password: req.body.password,
-//   })
-//     .then((dbUserData) => {
-//       req.session.save(() => {
-//         req.session.user_id = dbUserData.id;
-//         req.session.email = dbUserData.email;
-//         req.session.loggedIn = true;
+router.post('/', (req, res) => {
+  User.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+  })
+    .then((dbUserData) => {
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.email = dbUserData.email;
+        req.session.loggedIn = true;
 
 //         res.json(dbUserData);
 //       });

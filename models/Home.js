@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-const Home extends Model {}
+class Home extends Model {}
 
 Home.init(
     {
@@ -26,14 +26,7 @@ Home.init(
         country: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            },
-        },
+        },        
     },
     {
         sequelize,

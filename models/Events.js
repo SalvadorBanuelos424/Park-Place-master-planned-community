@@ -28,6 +28,8 @@ Events.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'gallery',
+        modelName: 'events',
     }
 );
+
+module.exports = Events;
