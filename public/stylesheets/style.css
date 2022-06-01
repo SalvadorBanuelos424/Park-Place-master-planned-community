@@ -640,6 +640,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .cursor-pointer {
   cursor: pointer;
 }
+.list-none {
+  list-style-type: none;
+}
 .flex-col {
   flex-direction: column;
 }

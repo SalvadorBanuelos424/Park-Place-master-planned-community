@@ -96,3 +96,19 @@
     <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-arrow-right"></i></button>
   </div>
 </div>
+
+<script>
+new Glide('.glide',{
+  type: 'carousel',
+  perView: 3,
+    focusAt: 'center',
+    gap: 95,
+    breakpoints: {
+      1200:{
+        perView: 3
+      },
+      800:{
+        perView: 1.5
+      }
+  }
+}).mount()</script>
