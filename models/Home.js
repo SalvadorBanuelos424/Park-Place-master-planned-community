@@ -10,30 +10,11 @@ Home.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-        },
-        street: {
+          },
+        address: {
             type: DataTypes.STRING,
             allowNull: false,            
-        },
-        city: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        state: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        country: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-              model: 'user',
-              key: 'id',
-            },
-          },
+        }
     },
     {
         sequelize,

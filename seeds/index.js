@@ -1,5 +1,7 @@
-const seedAmenities = require('./amenityData');
-const seedEvent = require('./eventData');
+const seedEvents = require('./eventSeeds');
+const seedUsers = require('./userSeeds');
+const seedHomes = require('./homeSeeds');
+const seedReservations = require('./reservationSeeds');
 
 const sequelize = require('../config/connection');
 
@@ -7,10 +9,16 @@ const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('--------------');
 
-  await seedAmenities();
+  await seedEvents();
+  console.log('--------------');  
+
+  await seedHomes();
   console.log('--------------');
 
-  await seedEvent();
+  await seedUsers();
+  console.log('--------------');
+
+  await seedReservations();
   console.log('--------------');
 
   process.exit(0);

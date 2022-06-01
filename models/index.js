@@ -1,12 +1,36 @@
-// const User = require('./User');
-// const Home = require('./Home');
-// const Events = require('./Events');
-// const Amenities = require('./Amenities');
+const User = require('./User');
+const Home = require('./Home');
+const Events = require('./Events');
+const Reservations = require('./Reservations');
 
-// User.hasOne(Home, {
-//     foreignKey: 'user_id',
-// });
+//home -> user connection
+//each home only has one user, one to one
+Home.hasOne(User, {
+    foreignKey: 'home_id'
+});
+User.belongsTo(Home, {
+    foreignKey: 'home_id',
+    onDelete: 'SET NULL'
+});
 
-// Home.belongsTo(User, {
-//     foreignKey: 'user_id',
-// });
+//user -> rsvp connection
+//users can make multiple reservations, one to many
+User.hasMany(Reservations, {
+    foreignKey: 'user_id',
+});
+Reservations.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'SET NULL'
+});
+
+//event -> rsvp connection
+//each event can have multiple reservations, one to many
+Events.hasMany(Reservations, {
+    foreignKey: 'event_id',
+});
+Reservations.belongsTo(Events, {
+    foreignKey: 'event_id',
+    onDelete: 'SET NULL'
+});
+
+module.exports = { User, Home, Events, Reservations };

@@ -1,40 +1,45 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Amenities extends Model {}
+class Reservations extends Model {}
 
-Amenities.init(
+Reservations.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-        },
-        amenity_name: {
+          },
+        attendance: {
             type: DataTypes.STRING,
             allowNull: false,
-        },        
-        amenity_description: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        amenity_date: {
+        },  
+        reservation_date: {
             type: DataTypes.DATE,
             allowNull: false,
+        },                      
+        event_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'events',
+                key: 'id'
+            }
         },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id'
-            },
-        },
+            }
+        }
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'gallery',
+        modelName: 'reservations',
     }
 );
+
+module.exports = Reservations;

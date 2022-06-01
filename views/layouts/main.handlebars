@@ -4,14 +4,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/public/stylesheets/style.css"/>
+  <link rel="stylesheet" href="stylesheets/style.css"/>
   <title>Park Place Community</title>
 </head>
-<body>
-  <h1 class="text-orange-600 italic">Hello There Welcome</h1>
+<body class="bg-gray-200">
+  <header class="">
+    <div class="flex flex-wrap justify-between m-5">
+      <a class=" text-4xl bg-blue-400 text-yellow-400" href="/">Park Place Community</a>
+      <div>
+        <nav>
+          <a href="/">{{#if loggedIn}}Dashboard{{else}}Home{{/if}}</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/contact">Contact</a>
+          {{#if loggedIn}}
+          <button id="logout">Logout</button>
+          {{/if}}
+        </nav>        
+      </div>
+    </div>
+  </header>
   <main>
     {{{body}}}
   </main>
-  
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}  
 </body>
 </html>
