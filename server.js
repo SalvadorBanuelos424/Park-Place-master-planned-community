@@ -16,8 +16,6 @@ app.use(express.urlencoded({ extended: false }));
 
 // serve files from public
 app.use(express.static(path.join(__dirname, 'public')));
-<<<<<<< HEAD
-=======
 
 const sess = {
   secret: 'classified stuff',
@@ -35,7 +33,6 @@ const helpers = require('./util/helpers');
 const hbs = create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
->>>>>>> 5a05ed85c648a2f257a40e8caa498a6155e6f2cc
 
 app.use(routes);
 
