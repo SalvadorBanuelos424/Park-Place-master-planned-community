@@ -13,22 +13,21 @@
       <a class=" text-5xl bg-blue-400 text-yellow-400 font-bold " href="/">Park Place Community</a>
       <div>
         <nav>
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
-        {{else}}
-        <a class="" href="/homepage">login</a>
-        {{/if}}
-      </nav>
+          <a href="/">{{#if loggedIn}}Dashboard{{else}}Home{{/if}}</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/contact">Contact</a>
+          {{#if loggedIn}}
+          <button id="logout">Logout</button>
+          {{/if}}
+        </nav>        
       </div>
     </div>
   </header>
-    
-  
-  
   <main>
     {{{body}}}
   </main>
-  
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}  
 </body>
 </html>

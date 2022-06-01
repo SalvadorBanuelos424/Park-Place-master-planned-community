@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { Reservations } = require('../../models');
 const withAuth = require('../../util/auth');
 
+//get
+
+//post
 router.post('/', withAuth, (req, res) => {
     Reservations.create({
         attendance: req.body.attendance,
