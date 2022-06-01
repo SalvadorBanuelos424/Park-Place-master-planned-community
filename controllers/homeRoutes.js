@@ -74,6 +74,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.render('dashboard', {
         amenity,
         event
+        
     });
 });
 
