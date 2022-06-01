@@ -21,7 +21,24 @@
       </nav>
 
     
+<body class="bg-gray-200">
+  <header class="">
+    <div class="flex flex-wrap justify-between m-5">
+      <a class=" text-4xl bg-blue-400 text-yellow-400" href="/">Park Place Community</a>
+      <div>
+        <nav>
+        {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
+        <button id="logout" class="btn-no-style">logout</button>
+        {{else}}
+        <a class="" href="/">login</a>
+        {{/if}}
+      </nav>
+      </div>
+    </div>
   </header>
+    
+  
   
   <main>
     {{{body}}}

@@ -12,10 +12,10 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 //express middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // serve files from public
-app.set(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const sess = {
   secret: 'classified stuff',

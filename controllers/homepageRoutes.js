@@ -23,6 +23,17 @@ router.get('/signup', async (req, res) => {
     });
 });
 
+router.get('/login', async (req, res) => {
+    console.log('===============SIGNUP================');       
+    res.render('login', {
+        loggedIn: req.session.loggedIn        
+    });
+});
+
+router.get('/calendar', (req, res) => {
+    res.render('calendar');
+  });
+
 //get dashboard for logged in user, get all amenities and events from db to display in calendar on template
 router.get('/dashboard', withAuth, async (req, res) => {
     console.log('===============DASHBOARD================');
