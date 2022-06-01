@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: rgb(221, 245, 215);
-}
-
 .btn{
     font-family: "montserrat", sans-serif;
 }
@@ -21,10 +17,10 @@ body{
 .glide__slide--active{
     opacity: 1;
     filter: none;
-    transform: scale(1.3);
+    transform: scale(1.1);
 }
 
-glide__slides{
+.glide__slides{
     overflow: visible;
 }
 
