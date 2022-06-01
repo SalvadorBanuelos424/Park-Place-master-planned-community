@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
+    "start": "npm run tailwind:css && node server.js",
+    "seeds": "node seeds/index.js"
   },
   "keywords": [],
   "author": "",
@@ -21,11 +23,10 @@
     "express-session": "^1.17.3",
     "handlebars": "^4.7.7",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.16",
     "postcss": "^8.4.14",
     "postcss-cli": "^9.1.0",
-    "sequelize": "^6.20.0"
-  },
-  "devDependencies": {
+    "sequelize": "^6.20.0",
     "tailwindcss": "^3.0.24"
   },
   "prettier": {

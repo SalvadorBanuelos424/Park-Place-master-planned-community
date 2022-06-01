@@ -1,23 +1,25 @@
-const express = require('express');
 const path = require('path');
+const express = require('express');
 const session = require('express-session');
-const exphbs = require('express-handlebars');
+const {create} = require('express-handlebars');
+const routes = require('./controllers');
 
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const app = express();
+const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
-const helpers = require('./utils/helpers');
-const routes = require('./controllers/');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+//express middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//express declaration
-const app = express();
-//port for sequelize
-const PORT = process.env.PORT || 3001;
-//express session
+// serve files from public
+app.set(express.static(path.join(__dirname, 'public')));
+
 const sess = {
-  secret: 'Super secret secret',
-  cookie: {},
+  secret: 'classified stuff',
+  cookie: {maxAge: 3600000},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -25,17 +27,12 @@ const sess = {
   })
 };
 app.use(session(sess));
-//handlebars declaration
-const hbs = exphbs.create({ helpers });
 
+//handlebars
+const helpers = require('./util/helpers');
+const hbs = create({ helpers });
 app.engine('handlebars', hbs.engine);
-// app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
-//express middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-//
-app.set(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 

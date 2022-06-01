@@ -10,7 +10,7 @@ Events.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-        },
+          },
         event_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -20,7 +20,7 @@ Events.init(
             allowNull: false,
         },
         event_date: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false,
         }
     },
