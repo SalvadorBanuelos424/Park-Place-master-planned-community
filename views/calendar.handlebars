@@ -48,10 +48,32 @@
         </thead>
         <tbody>
           <tr class="text-center h-20">
-            <td>something</td>
+            {{#each daysOfWeek as |dayOfWeek|}}
+              
+              <td class="{{#if isToday}}bg-red-200{{/if}} border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">                
+                {{> day dayOfWeek }}
+              </td>
+              
+            {{/each}}
+          </tr>
+          <tr class="text-center h-20">
             {{#each daysOfWeek as |dayOfWeek|}}
               <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">
-                {{> dayOfWeek}}
+                {{> day dayOfWeek }}
+              </td>
+            {{/each}}
+          </tr>
+          <tr class="text-center h-20">
+            {{#each daysOfWeek as |dayOfWeek|}}
+              <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">
+                {{> day dayOfWeek }}
+              </td>
+            {{/each}}
+          </tr>
+          <tr class="text-center h-20">
+            {{#each daysOfWeek as |dayOfWeek|}}
+              <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">
+                {{> day dayOfWeek }}
               </td>
             {{/each}}
           </tr>

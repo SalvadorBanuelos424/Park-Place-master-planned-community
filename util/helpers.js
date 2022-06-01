@@ -1,31 +1,52 @@
 function daysOfWeek(){
-    days = [{
-        name: 'sunday',
-        num: 0
-    },{
-        name: 'monday',
-        num: 1
-    },{
-        name: 'tuesday',
-        num: 2
-    },{
-        name: 'wednesday',
-        num: 3
-    },{
-        name: 'thursday',
-        num: 4
-    },{
-        name: 'friday',
-        num: 5
-    },{
-        name: 'saturday',
-        num: 6
-    }
-    ];
-    console.log('working');
+    days = 
+    {
+        sunday: {
+            name: 'sunday',
+            num: 0
+        },monday: {
+            name: 'monday',
+            num: 1
+        },tuesday: {
+            name: 'tuesday',
+            num: 2
+        },wednesday: {
+            name: 'wednesday',
+            num: 3
+        },thursday: {
+            name: 'thursday',
+            num: 4
+        },friday: {
+            name: 'friday',
+            num: 5
+        },saturday: {
+            name: 'saturday',
+            num: 6
+        }
+    };
     return days;
 };
-module.exports = { daysOfWeek };
+
+function dayOfMonth(){
+
+};
+
+function isToday(){
+    const td = document.getElementsByTagName("td").length;
+    if (td === 2) {
+        true
+    }
+};
+
+function isEvent(event_date){
+    let d = new Date();
+    let date = d.toISOString().split('T')[0];
+    if (event_date === date) {
+        return true;
+    }
+};
+
+module.exports = { daysOfWeek, isToday };
 
 //calendar maker
 // async function calendarGen(){
