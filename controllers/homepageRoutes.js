@@ -36,9 +36,11 @@ router.get('/dashboard', async (req, res) => {
     })
     .then(eventData => {
         const event = eventData.map(event => event.get({ plain: true}));
+        console.log(event);
         res.render('calendar', {
             event,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+
         });
     })
     .catch(err => {console.log(err); res.status(500).json(err);});
