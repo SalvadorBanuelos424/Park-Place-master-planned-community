@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: rgb(221, 245, 215);
-}
-
 .btn{
     font-family: "montserrat", sans-serif;
 }
