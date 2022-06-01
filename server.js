@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // serve files from public
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/')));
 
 const sess = {
   secret: 'classified stuff',
