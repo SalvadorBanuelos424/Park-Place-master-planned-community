@@ -36,6 +36,11 @@ app.set('view engine', 'handlebars');
 
 app.use(routes);
 
+app.get('*', (req, res) => {
+  res.redirect('/');
+  return;
+});
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });

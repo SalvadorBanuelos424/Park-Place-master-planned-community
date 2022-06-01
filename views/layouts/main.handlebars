@@ -7,41 +7,27 @@
   <link rel="stylesheet" href="stylesheets/style.css"/>
   <title>Park Place Community</title>
 </head>
-<body>
-  <header>
-      <h1>Park Place</h1>
-      
-      <nav>
-          <a href="/">{{#if loggedIn}}Dashboard{{else}}Home{{/if}}</a>
-          <a href="/gallery">Gallery</a>
-          <a href="/contact">Contact</a>
-          {{#if loggedIn}}
-          <button>Logout</button>
-          {{/if}}
-      </nav>
-
-    
 <body class="bg-gray-200">
   <header class="">
     <div class="flex flex-wrap justify-between m-5">
       <a class=" text-4xl bg-blue-400 text-yellow-400" href="/">Park Place Community</a>
       <div>
         <nav>
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
-        {{else}}
-        <a class="" href="/">login</a>
-        {{/if}}
-      </nav>
+          <a href="/">{{#if loggedIn}}Dashboard{{else}}Home{{/if}}</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/contact">Contact</a>
+          {{#if loggedIn}}
+          <button id="logout">Logout</button>
+          {{/if}}
+        </nav>        
       </div>
     </div>
   </header>
-    
-  
-  
   <main>
     {{{body}}}
   </main>
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}  
 </body>
 </html>
