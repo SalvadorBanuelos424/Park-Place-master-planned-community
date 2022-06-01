@@ -16,28 +16,29 @@
 <body class="bg-gray-200">
   <header class="">
     <div class="flex flex-wrap justify-between m-5">
+      
+      {{!-- make title and nav bar on same line with tailwind: hector/salvador --}}
       <a class=" text-4xl bg-blue-400 text-yellow-400" href="/">Park Place Community</a>
       <div>
         <nav class="w-full h-auto flex items-center justify-center btn mb-4 mt-4 drop-shadow-2xl">
-
-          <a href="#_" class="rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
-            <span class="absolute w-80 h-80 mt-20 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-in-out duration-1000 bg-gradient-to-r from-cyan-500 to-blue-500 left-0 top-0"></span>
-            <span class="relative text-lg drop-shadow-2xl">CONTACT</span>
-          </a>
-
-          {{!--  --}}
+          {{!-- navbar --}}
           <a href="/" class="rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
             <span class="absolute w-80 h-80 mt-20 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-in-out duration-1000 bg-gradient-to-r from-cyan-500 to-blue-500 left-0 top-0"></span>
             <span class="relative text-lg drop-shadow-2xl">{{#if loggedIn}}Dashboard{{else}}Home{{/if}}</span>
           </a>
-
           <a href="/gallery" class="rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
-          Gallery</a>
+            <span class="absolute w-80 h-80 mt-20 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-in-out duration-1000 bg-gradient-to-r from-cyan-500 to-blue-500 left-0 top-0"></span>
+            <span class="relative text-lg drop-shadow-2xl">Gallery</span>
+          </a>
           <a href="/contact" class="rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
-          Contact</a>
+            <span class="absolute w-80 h-80 mt-20 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-in-out duration-1000 bg-gradient-to-r from-cyan-500 to-blue-500 left-0 top-0"></span>
+            <span class="relative text-lg drop-shadow-2xl">Contact</span>
+          </a>
           {{#if loggedIn}}
           <button id="logout" class="rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
-            Logout</button>
+            <span class="absolute w-80 h-80 mt-20 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-in-out duration-1000 bg-gradient-to-r from-cyan-500 to-blue-500 left-0 top-0"></span>
+            <span class="relative text-lg drop-shadow-2xl">Logout</span>
+          </button>
           {{/if}}
         </nav>        
       </div>
