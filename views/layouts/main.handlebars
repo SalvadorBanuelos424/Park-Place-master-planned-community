@@ -10,8 +10,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="/node_modules/@glidejs/glide/dist/glide.min.js" charset="utf-8"></script>
-  <link rel="stylesheet" href="./node_modules/@glidejs/glide/dist/css/glide.core.min.css">
-  <link rel="stylesheet" href="./node_modules/@glidejs/glide/dist/css/glide.theme.min.css"></head>
+  <link rel="stylesheet" href="../node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+  <link rel="stylesheet" href="../node_modules/@glidejs/glide/dist/css/glide.theme.min.css"></head>
 </head>
 <body class="bg-gray-200">
   <header class="">
@@ -50,5 +50,24 @@
 {{#if loggedIn}}
 <script src="/js/logout.js"></script>
 {{/if}}  
+
+<script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+<script>
+new Glide('.glide',{
+  type: 'carousel',
+  perView: 3,
+    focusAt: 'center',
+    gap: 95,
+    breakpoints: {
+      1200:{
+        perView: 3
+      },
+      800:{
+        perView: 1.5
+      }
+  }
+}).mount()</script>
+
 </body>
 </html>
+
