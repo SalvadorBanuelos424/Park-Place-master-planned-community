@@ -1,17 +1,17 @@
 const User = require('./User');
-const Home = require('./Home');
+// const Home = require('./Home');
 const Events = require('./Events');
 const Reservations = require('./Reservations');
 
 //home -> user connection
 //each home only has one user, one to one
-Home.hasOne(User, {
-    foreignKey: 'home_id'
-});
-User.belongsTo(Home, {
-    foreignKey: 'home_id',
-    onDelete: 'SET NULL'
-});
+// Home.hasOne(User, {
+//     foreignKey: 'home_id'
+// });
+// User.belongsTo(Home, {
+//     foreignKey: 'home_id',
+//     onDelete: 'SET NULL'
+// });
 
 //user -> rsvp connection
 //users can make multiple reservations, one to many
@@ -33,4 +33,4 @@ Reservations.belongsTo(Events, {
     onDelete: 'SET NULL'
 });
 
-module.exports = { User, Home, Events, Reservations };
+module.exports = { User, Events, Reservations };

@@ -39,14 +39,10 @@ User.init(
         len: [8],
       },
     },
-    home_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'home',
-        key: 'id',
-      },    
-    }
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,            
+  }
   },
   {
     hooks: {
