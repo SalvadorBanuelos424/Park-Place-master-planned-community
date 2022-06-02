@@ -3,7 +3,7 @@
       <div class="wrapper bg-white rounded shadow w-full ">
         <div class="flex justify-between border-b p-2">
           <span class="text-lg font-bold">
-            2020 July
+            2022 June
           </span>
           <div class="buttons">
             <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
@@ -54,36 +54,17 @@
 
            --}}
           <tr class="text-center h-20">
-            {{#each daysOfWeek as |dayOfWeek|}}
-              
+            {{#each calendar}}
               <td class=" border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">                
-                {{> day dayOfWeek }}
-              </td>
-              
-            {{/each}}
-          </tr>
-          <tr class="text-center h-20">
-            {{#each daysOfWeek as |dayOfWeek|}}
-              <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">
-                {{#if isToday}}
-                {{> day dayOfWeek }}
+                {{> day }}
               </td>
             {{/each}}
-          </tr>
-          <tr class="text-center h-20">
-            {{#each daysOfWeek as |dayOfWeek|}}
-              <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">
-                {{> day dayOfWeek }}
+            {{!-- {{#each calendar}}
+              <td class=" border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">                
+                {{> day }}
               </td>
-            {{/each}}
-          </tr>
-          <tr class="text-center h-20">
-            {{#each daysOfWeek as |dayOfWeek|}}
-              <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">
-                {{> day dayOfWeek }}
-              </td>
-            {{/each}}
-          </tr>
+            {{/each}} --}}
+          </tr>          
         </tbody>
       </table>
     </div>

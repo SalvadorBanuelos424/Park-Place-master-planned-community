@@ -1,6 +1,12 @@
-<div class="flex flex-col h-40 mx-auto xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 mx-auto overflow-hidden">
+
+<div class="{{#if isToday}} bg-red-200 {{/if}}flex flex-col h-40 mx-auto xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 mx-auto overflow-hidden">
 <div class="top h-5 w-full">
-    <span class="text-gray-500">uh</span>
+    <span class="text-gray-500">{{dayOfMonth}}</span>
 </div>
-<div class="bottom flex-grow h-30 py-1 w-full cursor-pointer"></div>
+<div class="bottom flex-grow h-30 py-1 w-full cursor-pointer">
+    {{#if event}}
+    <span>{{event_name}}</span>
+    <span>{{event_description}}</span>
+    {{/if}}
+</div>
 </div>
