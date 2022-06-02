@@ -24,6 +24,7 @@ router.post('/', (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
+    address: req.body.address,
   })
     .then((dbUserData) => {
       req.session.save(() => {
@@ -43,11 +44,11 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
-      email: req.body.email,
+      email: req.body.email
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      req.status(400).json({ message: 'Incorrect password!' });
+      res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
 

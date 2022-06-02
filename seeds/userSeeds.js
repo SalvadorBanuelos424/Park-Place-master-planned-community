@@ -5,7 +5,7 @@ const userData = [
         name: 'alec alec',
         email: 'test@test.com',
         password: 'password',
-        home_id: 1
+        address: '123 Street Lane'
     }
 ];
 

@@ -1,10 +1,10 @@
-const { Home } = require('../models');
+// const { Home } = require('../models');
 
-const homeData = [
-    {
-        address: '123 Street Lane',
-    }
-];
+// const homeData = [
+//     {
+//         address: '123 Street Lane',
+//     }
+// ];
 
-const seedHomes = () => Home.bulkCreate(homeData);
-module.exports = seedHomes;
+// const seedHomes = () => Home.bulkCreate(homeData);
+// module.exports = seedHomes;
