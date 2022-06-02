@@ -37,10 +37,10 @@ router.get('/dashboard', async (req, res) => {
     })
     .then(eventData => {
         const events = eventData.map(event => event.get({ plain: true}));
-        console.log(events);
         const calendar = calendarMaker(events);
         res.render('calendar', {
             calendar,
+            events,
             loggedIn: req.session.loggedIn,
 
         });

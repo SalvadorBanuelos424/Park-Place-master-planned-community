@@ -1,14 +1,29 @@
-async function calendarMaker(events){
-    
-    console.log(events.event_date);
-    
+function isThereAnEvent(events, d){
+    d.toISOString().substring(0, 10);
+    let eventCompare = d.toISOString().substring(0, 10);
+    let match = false;
+    let name = null;
+    let desc = null;
+    events.map(event => {
+        if (event.event_date === eventCompare) {
+            console.log(event.event_date);
+            match = true;
+            name = event.event_name;
+            desc = event.event_description;
+        }
+    });
+    let event = {match: match, name: name, desc: desc};
+    return event;
+};
+
+function calendarMaker(events){
     let calendarMonth = []//will hold 5 weeks
     let calendarWeek = []//will hold 7 days
 
     //week1
-    for (let i = 0; i < 7; i++) {
-        let d = new Date();
-    
+    for (let i = 0; i < 7; i++) {        
+        let d = new Date();        
+
         //today
         let dayOfWeek = d.getDay();//0-6
         let dayOfMonth = d.getDate();//1-31
@@ -29,16 +44,21 @@ async function calendarMaker(events){
         let dayDiff = null; 
 
         //if today       
-        if (i === dayOfWeek) {            
-            calendarWeek.push({
+        if (i === dayOfWeek) { 
+            
+            if (isThereAnEvent(events, d)){
+
+            }
+            let calendarDay = {
                 weekDay: i,
                 isToday: true,
                 month: month,
                 dayOfMonth: dayOfMonth
-            });
+            };
+            calendarWeek.push(calendarDay);
         } 
         //if before today
-        else if (i < dayOfWeek) {
+        else if (i < dayOfWeek) {            
             dayDiff = dayOfWeek - i;
             //if i is a date from last month
             if (dayOfMonth - dayDiff <= 0) {                
@@ -46,14 +66,22 @@ async function calendarMaker(events){
                 d.setMonth(d.getMonth(month - 1), num);
                 month = d.getMonth();
                 dayOfMonth = d.getDate();
-                console.log(dayOfMonth);
             }
-            calendarWeek.push({
+
+            let isEvent = false;
+            if (isThereAnEvent(events, d)){
+                isEvent = true;
+            }
+
+            let calendarDay = {
                 weekDay: i,
                 isToday: false,
                 month: month,
-                dayOfMonth: dayOfMonth
-            });
+                dayOfMonth: dayOfMonth,
+                isEvent: isEvent,
+
+            };
+            calendarWeek.push(calendarDay);
         } 
         //if after today
         else {
@@ -65,20 +93,23 @@ async function calendarMaker(events){
                 month = d.getMonth();
             }
             d.setDate(dayOfMonth + dayDiff);
-            calendarWeek.push({
+
+            let event = isThereAnEvent(events, d);
+            console.log(event);
+            let calendarDay = {
                 weekDay: i,
                 isToday: false,
                 month: month,
-                dayOfMonth: d.getDay()
-            });
+                dayOfMonth: d.getDay(),
+                isEvent: event.match,
+                eventName: event.name,
+                eventDesc: event.desc
+            }
+            calendarWeek.push(calendarDay);
         }
-        
-        
-    }
-
+    };
     console.log(calendarWeek);
-    // return  calendarWeek;
-    return;
+    return  calendarWeek;
 };
 //5 weeks so 5 rows
 //7 days to a row
