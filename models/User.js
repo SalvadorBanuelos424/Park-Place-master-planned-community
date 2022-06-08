@@ -21,8 +21,8 @@ User.init(
       allowNull: false,
       validate: {
         isAlphanumeric: true,
-        notEmpty: true
-      }
+        notEmpty: true,
+      },
     },
     email: {
       type: DataTypes.STRING,
@@ -41,8 +41,13 @@ User.init(
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: false,            
-  }
+      allowNull: false,
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'user',
+    },
   },
   {
     hooks: {
