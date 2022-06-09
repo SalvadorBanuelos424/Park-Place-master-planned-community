@@ -3,13 +3,13 @@
       <div class="wrapper bg-white rounded shadow w-full ">
         <div class="flex justify-between border-b p-2">
           <span class="text-lg font-bold">
-            2022 June
+            idk
           </span>
           <div class="buttons">
-            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+            <button id="prev" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
               Prev
             </button>
-            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+            <button id="next" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
               Next
             </button>
           </div>
@@ -18,53 +18,19 @@
       <table class="w-full bg-white">
         <thead>
           <tr>
-            <th class="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 xl:text-sm text-xs">
-              <span class="xl:block lg:block md:block sm:block hidden">Sunday</span>
-              <span class="xl:hidden lg:hidden md:hidden sm:hidden block">Sun</span>
-            </th>
-            <th class="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 xl:text-sm text-xs">
-              <span class="xl:block lg:block md:block sm:block hidden">Monday</span>
-              <span class="xl:hidden lg:hidden md:hidden sm:hidden block">Mon</span>
-            </th>
-            <th class="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 xl:text-sm text-xs">
-              <span class="xl:block lg:block md:block sm:block hidden">Tuesday</span>
-              <span class="xl:hidden lg:hidden md:hidden sm:hidden block">Tue</span>
-            </th>
-            <th class="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 xl:text-sm text-xs">
-              <span class="xl:block lg:block md:block sm:block hidden">Wednesday</span>
-              <span class="xl:hidden lg:hidden md:hidden sm:hidden block">Wed</span>
-            </th>
-            <th class="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 xl:text-sm text-xs">
-              <span class="xl:block lg:block md:block sm:block hidden">Thursday</span>
-              <span class="xl:hidden lg:hidden md:hidden sm:hidden block">Thu</span>
-            </th>
-            <th class="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 xl:text-sm text-xs">
-              <span class="xl:block lg:block md:block sm:block hidden">Friday</span>
-              <span class="xl:hidden lg:hidden md:hidden sm:hidden block">Fri</span>
-            </th>
-            <th class="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 xl:text-sm text-xs">
-              <span class="xl:block lg:block md:block sm:block hidden">Saturday</span>
-              <span class="xl:hidden lg:hidden md:hidden sm:hidden block">Sat</span>
-            </th>
+            {{#each headers}}
+              {{> dayNames}}
+            {{/each}}
           </tr>
         </thead>
         <tbody>
-          {{!-- trying to add day of month to each td
-          trying to highlight today as diff color
-
-           --}}
+          {{#each month as |week|}}
           <tr class="text-center h-20">
-            {{#each calendar}}
-              <td class=" border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">                
-                {{> day }}
-              </td>
-            {{/each}}
-            {{!-- {{#each calendar}}
-              <td class=" border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 ">                
-                {{> day }}
-              </td>
-            {{/each}} --}}
-          </tr>          
+              {{#each week as |day|}}
+                {{> day day}}
+              {{/each}}
+          </tr>
+          {{/each}}
         </tbody>
       </table>
     </div>
