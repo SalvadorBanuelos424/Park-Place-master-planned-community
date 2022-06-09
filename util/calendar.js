@@ -30,7 +30,7 @@ function month(){
     for (let i = 0; i < 5; i++) {
         week = [];
         for (let i = 0; i < 7; i++) {
-            week.push('day');
+            week.push(i);
         }
         month.push(week);
     }

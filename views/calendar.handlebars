@@ -24,10 +24,10 @@
           </tr>
         </thead>
         <tbody>
-          {{#each month as |week|}}
+          {{#each month}}
           <tr class="text-center h-20">
-              {{#each week as |day|}}
-                {{> day day}}
+              {{#each this}}           
+                {{> day this}}
               {{/each}}
           </tr>
           {{/each}}
@@ -35,3 +35,4 @@
       </table>
     </div>
 </div>
+<script src="/js/calendar.js"></script>

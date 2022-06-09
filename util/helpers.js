@@ -1,6 +1,4 @@
-module.exports = {
-    isToday: () => {
-        const d = new Date();
-        
-    }
+module.exports = {print: (print) => {
+    return print;
+},
 };
