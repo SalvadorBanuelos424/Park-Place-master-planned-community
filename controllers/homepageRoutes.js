@@ -25,7 +25,7 @@ router.get('/signup', async (req, res) => {
 });
 
 //get dashboard for logged in user, get all amenities and events from db to display in calendar on template
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     console.log('===============DASHBOARD================');
     Events.findAll({
         attributes: [
