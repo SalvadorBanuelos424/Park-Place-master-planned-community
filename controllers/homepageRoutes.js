@@ -3,7 +3,7 @@ const { Events, Home, User, Reservations } = require('../models');
 const sequelize = require('../config/connection');
 
 const withAuth = require('../util/auth');
-const {daysOfWeek, isToday} = require('../util/helpers');
+const { headers, month } = require('../util/calendar');
 
 //home page for login or signup, if user is already logged in will redirect to dashboard
 router.get('/', async (req, res) => {
@@ -36,11 +36,11 @@ router.get('/dashboard', async (req, res) => {
         ]        
     })
     .then(eventData => {
-        const event = eventData.map(event => event.get({ plain: true}));
+        const events = eventData.map(event => event.get({ plain: true}));        
         res.render('calendar', {
-            daysOfWeek,
-            isToday,
-            event,
+            headers,
+            month,
+            events,
             loggedIn: req.session.loggedIn,
 
         });
