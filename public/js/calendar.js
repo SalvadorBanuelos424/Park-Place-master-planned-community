@@ -73,10 +73,19 @@ function setCalendar(){
     } else {
       elements[i].dataset.day = today.day;
       elements[i].dataset.month = today.month;
+      elements[i].classList.add('bg-red-200');
     }
     subElements[i].innerHTML = elements[i].dataset.day;
   });
-  calTitle(today, elements);  
+  calTitle(today, elements);
+  
+
+  fetch('/api/calendar', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },    
+  }).then(renderEvents);
 };
 
 function calTitle(today, elements){
@@ -91,7 +100,29 @@ function calTitle(today, elements){
   document.querySelector('#calTitle').innerHTML = currMonth;
 };
 
-function getEvents(){
+const renderEvents = async (events) => {
+  let e = await events.json();
+  const elements = document.querySelectorAll(".day");
+  const eventDiv = document.querySelectorAll("#eventDay");
+  e.forEach((event) => {
+    let dateArray = event.event_date.split("-");
+    let date = {
+      year: dateArray[0],
+      month: parseInt(dateArray[1], 10) - 1,
+      day: parseInt(dateArray[2], 10)
+    };    
+    elements.forEach((value, i) => {
+      if (value.dataset.month == date.month && value.dataset.day == date.day) {
+        eventDiv[i].innerHTML = `<span>${event.event_name}</span><br>
+        <div class='bg-blue-300 m-1 bottom rounded'>${event.event_description}</div>
+        `;
+        eventDiv[i].classList.remove('hidden');
+      }
+    });
+  });
+};
+
+function isToday(){
 
 };
 
