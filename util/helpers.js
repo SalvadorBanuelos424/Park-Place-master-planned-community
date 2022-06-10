@@ -1,4 +1,4 @@
 module.exports = {print: (print) => {
-    return print;
+  return print;
 },
 };

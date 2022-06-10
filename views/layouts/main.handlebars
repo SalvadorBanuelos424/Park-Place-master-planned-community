@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/node_modules/@glidejs/glide/dist/css/glide.core.min.css">
   <link rel="stylesheet" href="/node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
   {{!-- <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script> --}}
+  <script src="https://cdn.tailwindcss.com"></script>
   </head>
 </head>
 <body class="">
@@ -49,39 +50,42 @@
     </div>
     </div>
     {{/unless}}
-    <div class="flex flex-wrap justify-between m-5">
-        
+    <div class="m-5">
+      
       {{!-- make title and nav bar on same line with tailwind: hector/salvador --}}
       <!-- logo -->
-      <li class="mb-2 w-72 list-none">
-        <h1 class=" shadow-inner	shadow-2xl flex text-yellow-100 bg-sky-500 border-teal-400 border-8 justify-end duration-500 text-4xl font-bold rounded-full pt-2 pb- px-3">Park Place
+      <div class="mb-2">
+        <div class="flex flex-wrap xl:justify-between justify-center">
+          <h1 class=" shadow-inner h-1/2 w-72 shadow-2xl flex text-yellow-100 bg-sky-500 border-teal-400 border-8 justify-end duration-500 text-4xl font-bold rounded-full pt-2 pb- px-3">Park Place
             <svg class="w-14 h-14 text-teal-200 pb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
-      </h1>
-      </li>
-
-
-      <div>
-        <nav class="w-full h-auto flex items-center justify-center btn mb-4 mt-12 drop-shadow-2xl">
+        </h1>
+        </div>
+        <nav class="w-auto h-auto flex flex-col lg:flex-row justify-end btn mb-4 mt-12 drop-shadow-2xl">
           {{!-- navbar --}}
-          <a href="/" class="mx-4 bg-gradient-to-b from-teal-200 to-blue-200 rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
+          <a href="/" class="mx-4 mb-3 text-center bg-gradient-to-b from-teal-200 to-blue-200 rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
             <span class="absolute w-80 h-80 mt-20 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-in-out duration-1000 bg-gradient-to-r from-cyan-500 to-blue-500 left-0 top-0"></span>
             <span class="relative text-lg drop-shadow-2xl">{{#if loggedIn}}Dashboard{{else}}Home{{/if}}</span>
           </a>
-          <a href="/gallery" class="mx-4 bg-gradient-to-b from-teal-200 to-blue-200 rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
+          <a href="/gallery" class="mx-4 mb-3 text-center bg-gradient-to-b from-teal-200 to-blue-200 rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
             <span class="absolute w-80 h-80 mt-20 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-in-out duration-1000 bg-gradient-to-r from-cyan-500 to-blue-500 left-0 top-0"></span>
             <span class="relative text-lg drop-shadow-2xl">Gallery</span>
           </a>
-          <a href="/contact" class="mx-4 bg-gradient-to-b from-teal-200 to-blue-200 rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
+          <a href="/contact" class="mx-4 mb-3 text-center bg-gradient-to-b from-teal-200 to-blue-200 rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
             <span class="absolute w-80 h-80 mt-20 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-in-out duration-1000 bg-gradient-to-r from-cyan-500 to-blue-500 left-0 top-0"></span>
             <span class="relative text-lg drop-shadow-2xl">Contact</span>
           </a>
           {{#if loggedIn}}
-          <button id="logout" class="mx-4 bg-gradient-to-b from-teal-200 to-blue-200 rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
+          <button id="logout" class="mx-4 mb-3 bg-gradient-to-b from-teal-200 to-blue-200 rounded-lg relative border-2 border-sky-800 overflow-hidden text-sky-800  mx-1 px-24 py-4 group hover:text-green-300">
             <span class="absolute w-80 h-80 mt-20 group-hover:-rotate-45 group-hover:-mt-24 transition-all ease-in-out duration-1000 bg-gradient-to-r from-cyan-500 to-blue-500 left-0 top-0"></span>
             <span class="relative text-lg drop-shadow-2xl">Logout</span>
           </button>
           {{/if}}
         </nav>        
+      </div>
+
+
+      <div>
+        
       </div>
     </div>
   </header>
