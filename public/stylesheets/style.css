@@ -471,9 +471,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .m-0 {
   margin: 0px;
 }
-.m-5 {
-  margin: 1.25rem;
-}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -541,8 +538,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mb-2 {
   margin-bottom: 0.5rem;
 }
-.mt-12 {
-  margin-top: 3rem;
+.mb-1 {
+  margin-bottom: 0.25rem;
 }
 .mb-3 {
   margin-bottom: 0.75rem;

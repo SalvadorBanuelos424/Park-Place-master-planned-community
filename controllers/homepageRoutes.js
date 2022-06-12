@@ -37,13 +37,15 @@ router.get('/dashboard', async (req, res) => {
     })
     .then(eventData => {
         const events = eventData.map(event => event.get({ plain: true}));        
-        res.render('calendar', {
-            headers,
-            month,
-            events,
-            loggedIn: req.session.loggedIn,
-
-        });
+        if(window.screen.width >= 640) {
+            res.render('calendar', {
+                headers,
+                month,
+                events,
+                loggedIn: req.session.loggedIn,
+    
+            });
+        }
     })
     .catch(err => {console.log(err); res.status(500).json(err);});
 });
