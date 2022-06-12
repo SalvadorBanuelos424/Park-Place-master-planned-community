@@ -3,19 +3,28 @@ const { Events } = require('../../models');
 const { authUser } = require('../../util/helpers');
 
 //get
-router.get('/test', authUser(['admin']), (req, res) => {
-  res.json('You have permission');
+router.get('/', (req, res) => {
+  Events.findAll({
+    attributes: ['id', 'event_name', 'event_description', 'event_date'],
+  })
+    .then((eventData) => {
+      const events = eventData.map((event) => event.get({ plain: true }));
+      res.json(events);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-router.post('/test/event', authUser(['admin']), (req, res) => {
+router.post('/', (req, res) => {
   Events.create({
-    title: req.body.title,
-    desc: req.body.desc,
-    date: req.body.date,
-    time: req.body.time,
+    event_name: req.body.event_name,
+    event_description: req.body.event_description,
+    event_date: req.body.event_date,
   })
     .then((dbEventData) => {
-      req.json(dbEventData);
+      res.json(dbEventData);
     })
     .catch((err) => {
       console.log(err);
