@@ -1,4 +1,4 @@
-<!--carousel-->
+<!-- carousel/ gallery section-->
 <div class="glide bg-gradient-to-b from-white to-sky-700 p-8 h-auto my-8 drop-shadow-2xl">
   <div class="glide__track h-full" data-glide-el="track">
   <ul class="glide__slides h-full">
@@ -50,7 +50,6 @@
       <img src="/img/11.jpg">
       <h1 class="h-8 text-teal-300 text-xl font-semibold italic text-center">Expansive Greenbelts</h1> 
     </li>
-    </li>
     <li class="glide__slide bg-white bg-opacity-10 rounded-3xl">
       <img src="/img/13.jpg">
       <h1 class="h-8 text-teal-300 text-xl font-semibold italic text-center">Catering Kitchen</h1> 
@@ -97,25 +96,25 @@
   </div>
 </div>
 
-
+<!-- page text -->
 <div class="m-8 mb-36 mt-28 mx-20">
   <h1 class="italic text-center text-xl lg:text-5xl text-teal-600 tracking-widest font-semibold m-8 underline underline-offset-1">The Parkhouse</h1>
   <h3 class="italic text-center text-md lg:text-2xl tracking-wide font-semibold m-8 text-sky-700 text">The Parkhouse hosts an array of modern amenities with 14,500 square feet to explore. Stay healthy and active at the state-of-the-art fitness center, sit back and relax in the movie theater or take your four-legged friend to the dog park. This fully appointed clubhouse has everything you need and more to connect, have fun and enjoy life to the fullest.</h3>
 </div>
 
-
+<!-- carousel script -->
 <script>
 new Glide('.glide',{
   type: 'carousel',
   perView: 3,
     focusAt: 'center',
-    gap: 95,
+    gap: 45,
     breakpoints: {
       1200:{
         perView: 3
       },
       800:{
-        perView: 1.5
+        perView: 1
       }
   }
 }).mount()</script>

@@ -1,38 +1,36 @@
+<!-- calendar section-->
 <div class="bg-gradient-to-t from-white to-sky-700">
   <div class="container mx-auto my-8 p-4">
-      <div class="wrapper bg-white rounded shadow w-full ">
-        <div class="flex justify-between border-b p-2">
-          <span class="text-lg font-bold">
-            idk
-          </span>
-          <div class="buttons">
-            <button id="prev" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
-              Prev
-            </button>
-            <button id="next" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
-              Next
-            </button>
-          </div>
+    <div class="wrapper bg-white rounded shadow w-full ">
+      <div class="flex justify-between border-b p-2">
+        <span class="text-lg font-bold">
+          idk
+        </span>
+        <div class="buttons">
+          <button id="prev" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">Prev</button>
+          <button id="next" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">Next</button>
         </div>
       </div>
-      <table class="w-full bg-white">
-        <thead>
-          <tr>
-            {{#each headers}}
-              {{> dayNames}}
-            {{/each}}
-          </tr>
-        </thead>
-        <tbody>
-          {{#each month}}
-          <tr class="text-center h-20">
-              {{#each this}}           
-                {{> day this}}
-              {{/each}}
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
     </div>
+    <table class="w-full bg-white">
+      <thead>
+        <tr>
+          {{#each headers}}
+            {{> dayNames}}
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each month}}
+        <tr class="text-center h-20">
+            {{#each this}}           
+              {{> day this}}
+            {{/each}}
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </div>
+
 <script src="/js/calendar.js"></script>

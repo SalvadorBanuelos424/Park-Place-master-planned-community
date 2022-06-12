@@ -1,11 +1,14 @@
+/* tailwind input set-up sheet */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* adding font styles */
 .btn{
     font-family: "montserrat", sans-serif;
 }
 
+/* adding carousel styles */
 .glide__slide img{
     width: 100%;
 }
@@ -17,7 +20,7 @@
 .glide__slide--active{
     opacity: 1;
     filter: none;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .glide__slides{
@@ -29,5 +32,5 @@
     height: 440px; 
     background-size: cover;
     overflow: hidden;
-    /* clip-path: polygon(0 0,100% 0, 100% 100%,0 85%); */
+    clip-path: polygon(0 0,100% 0, 100% 100%,0 85%);
 }
