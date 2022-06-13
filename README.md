@@ -1,8 +1,17 @@
-# GitGrub
+# Park Place Association Website
+
+This website is a potential product we will be pitching to a local community for real use. Allows interaction from employees and customers to view and change reservations and other features later in the future.
 
 ## Usage
 
-## Tests
+Signup is functional or you can login using the following
+
+```
+email: test@test.com
+password: password
+```
+
+You can view the current calendar setup showing pre entered events. Future versions will allow employees to add events themselves.
 
 ## Technologies Used
 
