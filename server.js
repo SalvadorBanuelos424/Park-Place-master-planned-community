@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, '/')));
 
 const sess = {
   secret: 'classified stuff',
-  cookie: {maxAge: 3600000, sameSite: 'none'},
+  cookie: {maxAge: 3600000},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
