@@ -2,6 +2,9 @@
 
 This website is a potential product we will be pitching to a local community for real use. Allows interaction from employees and customers to view and change reservations and other features later in the future.
 
+## Deployment
+https://park-place-association.herokuapp.com/
+
 ## Usage
 
 Signup is functional or you can login using the following
